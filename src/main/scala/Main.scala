@@ -59,15 +59,15 @@ def toString(list: List[Char]): String =
     case head :: tail => head + toString(tail)
     case Nil          => ""
 
-def max(a: Int, b: Int): Int =
+def min(a: Int, b: Int): Int =
   a >= b match
     case true  => b
     case false => a
 
 def makeLine(value: Int, maxValue: Int): String =
   toString(
-    map(range(0, max(value, maxValue)), e => 'X')
-  ) + toString(map(range(0, maxValue - max(value, maxValue)), e => '.'))
+    map(range(0, min(value, maxValue)), e => 'X')
+  ) + toString(map(range(0, maxValue - min(value, maxValue)), e => '.'))
 
 def makeLongLine(value: Int, maxValue: Int): String =
   toString(
@@ -90,12 +90,12 @@ def toBerlinClock(time: String): String =
     case true  => ".";
     case false => "X"
 
-  val hoursDividedBy5 = max((timeInt(0) / 5).toInt, 4)
+  val hoursDividedBy5 = min((timeInt(0) / 5).toInt, 4)
 
   val line1 = makeLine(hoursDividedBy5, 4);
   val line2 = makeLine(timeInt(0) - hoursDividedBy5 * 5, 4)
 
-  val minutesDivideBy12 = max((timeInt(1) / 5).toInt, 11)
+  val minutesDivideBy12 = min((timeInt(1) / 5).toInt, 11)
   val line3 = makeLongLine(minutesDivideBy12, 11)
 
   val line4 = makeLine(timeInt(1) - minutesDivideBy12 * 5, 4)
