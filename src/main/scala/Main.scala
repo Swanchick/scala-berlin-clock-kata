@@ -95,9 +95,9 @@ def toBerlinClock(time: String): String =
   val line1 = makeLine(hoursDividedBy5, 4);
   val line2 = makeLine(timeInt(0) - hoursDividedBy5 * 5, 4)
 
-  val minutesDivideBy12 = min((timeInt(1) / 5).toInt, 11)
-  val line3 = makeLongLine(minutesDivideBy12, 11)
+  val minutesDivideBy5 = min((timeInt(1) / 5).toInt, 11)
+  val line3 = makeLongLine(minutesDivideBy5, 11)
 
-  val line4 = makeLine(timeInt(1) - minutesDivideBy12 * 5, 4)
+  val line4 = makeLine(timeInt(1) - minutesDivideBy5 * 5, 4)
 
   seconds + " " + line1 + " " + line2 + " " + line3 + " " + line4
